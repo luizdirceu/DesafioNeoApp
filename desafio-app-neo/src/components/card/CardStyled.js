@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const DivStyle = styled.div`
-height: 50vh;
+height: 70vh;
 width: 20vw;
-/* padding: auto;
-margin: auto; */
 background-color: red;
 flex-direction: column;
 display: flex;
@@ -13,7 +11,7 @@ text-align:center;
 padding:5px;
 img{
     width: 20vw;
-    height: 30vh;
+    height: 40vh;
 }
 `
 export const TituloStyle =styled.h3`

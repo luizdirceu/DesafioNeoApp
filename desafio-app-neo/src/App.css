@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.card{
+.card {
   background-color: blue;
   display: grid;
   grid-template-columns: repeat(3);
@@ -11,8 +11,13 @@
   margin: 10px;
   height: 40px;
 }
-.home{
-  display:grid;
-grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+
+.home {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+  top: auto;
+  left: auto;
+  justify-items: center;
+  background-color: cadetblue;
 }

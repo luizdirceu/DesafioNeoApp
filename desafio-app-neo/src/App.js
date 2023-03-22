@@ -6,6 +6,7 @@ import './App.css';
 import Card from './components/card/Card';
 import { Context } from './contexts/Contexts';
 import GlobalState from './contexts/GlobalState';
+import { GlobalStyle } from './GlobalStyle';
 import Details from './pages/details/Details';
 import HomePage from "./pages/home/HomePage"
 
@@ -67,7 +68,7 @@ getQuadrinhos()
 //     <>
 // <HomePage render={renderQuadrinhosLista}/>
 //     </>
-<GlobalState >
+<GlobalState >  
   {renderizaTela()}
 </GlobalState>
 

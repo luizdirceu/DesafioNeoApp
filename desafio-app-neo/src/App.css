@@ -6,7 +6,7 @@
   background-color: blue;
   display: grid;
   grid-template-columns: repeat(3);
-  gap: 10px;
+  gap: 50px;
   padding: 10px;
   margin: 10px;
   height: 40px;
@@ -14,10 +14,80 @@
 
 .home {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 35px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
   top: auto;
   left: auto;
+  bottom: auto;
+  /* width: 100%;
+  height: 100%; */
   justify-items: center;
-  background-color: cadetblue;
+  /* box-shadow: 60px -16px teal; */
+  /* background-color: #591f59; */
+  /* background-image: linear-gradient(to bottom, #d43f3f, #df3739, #ea2d32, #f51e2b, #ff0022); */
+  background-image: linear-gradient(to top, #d43f3f, #df3739, #ea2d32, #f51e2b, #ff0022);
+  /* background-color: #fffbe9; */
+  /* border: 7px solid black; */
+  padding: 15px;
+}
+.table{
+  margin: auto;
+  width: 50vw;
+  background-color: blanchedalmond;
+}
+.table tr td{
+  padding: 5px;
+  border:solid 1px #000;
+  width: 100px;
+}
+.table img{
+  width: 50px;
+  height: 50px;
+}
+.container-carrinho{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  gap:50px;
+}
+.container-carrinho button{
+width: 70px;
+height: 30px;
+position: relative;
+text-align: center;
+margin: auto;
+}
+
+.btn-card{
+  margin: auto;
+  width: 17vw;
+  padding: 5px;
+  font-size: 20px;
+  text-overflow: clip;
+  background-color:#292429;
+  color: bisque;
+  border-radius: 5px;
+}
+.btn-card:hover{
+  cursor: pointer;
+  background-color: transparent ;
+
+}
+.header{
+  text-align: center;
+  background-color: red;
+}
+.header img{
+  height: 200px;
+  width: 60%;
+  
+}
+.descricao{
+ width: 50vw;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.descricao p{
+  text-align: justify;
 }

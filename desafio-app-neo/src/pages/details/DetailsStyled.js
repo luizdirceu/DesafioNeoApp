@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const ContainerNav = styled.nav`
+margin: auto;
+    width: 100%;
+    height: auto;
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    
+      display: flex;
+      flex-direction:column;
+      height: auto;
+      width: auto;
+      background-color: #f51e2b;
+    
+    }
+`
 export const Container = styled.section`
 display:flex;
 flex-direction:row;
@@ -7,14 +21,17 @@ background-image: linear-gradient(to top, #d43f3f, #df3739, #ea2d32, #f51e2b, #f
 padding:50px;
 gap:10px;
 justify-content: center;
-/* margin:auto; */
-/* top: auto; */
 img{
-    /* position: absolute; */
     width:250px;
     height:70vh;
     border-radius: 5px;
 left: 30px;}
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  display: flex;
+      flex-direction:column;
+      height: auto;
+      width: auto;
+}
 `
 export const ContainerDescrição = styled.article`
 width: 50vw;
@@ -30,16 +47,4 @@ export const TituloH1 = styled.h1`
 export const TituloH3 = styled.h3`
 `
 export const ContainerP = styled.p`
-`
-export const ContainerButton = styled.button`
-position: absolute;
-left: 65rem;
-bottom: 21rem;
-  width: 8vw;
-  padding: 2px;
-  font-size: 15px;
-  background-color:#292429;
-  color: bisque;
-  border-radius: 5px;
-  cursor:pointer;
 `

@@ -1,18 +1,22 @@
-import { useContext } from "react";
-import { Context } from "../../contexts/Contexts";
-import { Container, ContainerButton, ContainerDescrição, TituloH1, TituloH3, ContainerIMG, ContainerP } from "./DetailsStyled";
+import { Container, ContainerDescrição, TituloH1, TituloH3, ContainerIMG, ContainerP, ContainerNav } from "./DetailsStyled";
 import Header from "../../components/header/Header";
+
 function Details(props) {
-    const { title, quadrinho, quadrinhos, details, irParaOutraTela } = props
-    const context = useContext(Context)
+    // Todas as props recebidas sendo desestruturadas.
+    const { details, irParaOutraTela } = props
+
+   // Constante da frase se a sinopse deste quadrinho não existir.
     const fraseSinopse = "Quadrinho sem sinopse."
+
+    // Constante da frase se a descrição deste quadrinho não existir.
     const fraseDescrição = "Quadrinho sem descrição."
+    
     return (
-        <>
+        <ContainerNav>
             <Header />
             <Container>
                 <ContainerIMG>
-                    <img src={details[0]} />
+                    <img src={details[0]} alt="Detalhe"/>
                 </ContainerIMG>
                 <ContainerDescrição className="descricao">
                     <TituloH1>{details[1]};</TituloH1>
@@ -21,10 +25,10 @@ function Details(props) {
                     <ContainerP>{details[3] === "" ? fraseDescrição : details[3]}</ContainerP>
                     <TituloH3>SINOPSE</TituloH3>
                     <ContainerP>{details[4] === undefined ? fraseSinopse : details[4].text}</ContainerP>
-                    <ContainerButton onClick={() => irParaOutraTela(1)}>Voltar</ContainerButton>
+                    <button className="btn-detalhe" onClick={() => irParaOutraTela(1)}>Voltar</button>
                 </ContainerDescrição>
             </Container>
-        </>)
+        </ContainerNav>)
 }
 
 export default Details;

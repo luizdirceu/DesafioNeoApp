@@ -1,9 +1,12 @@
+import { HeaderStyle } from "./HeaderStyled";
+import marvel from "../../assets/marvel.jpg"
 function Header (){
 
     return (
-<header className="header" style={{height: "200px"}}>
-    <img src="https://wallpapercave.com/wp/wp2700194.jpg"/>
-</header>
+<HeaderStyle >
+    {/* <img src="https://wallpapercave.com/wp/wp2700194.jpg"/> */}
+    <img src={marvel} alt="marvel"/>
+</HeaderStyle>
     )
 }
 export default Header;

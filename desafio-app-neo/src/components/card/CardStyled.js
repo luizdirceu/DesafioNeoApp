@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-export const DivStyle = styled.div`
+export const ContainerCard = styled.section`
 height: 95vh;
 width: 20vw;
-/* background-image: radial-gradient(circle at 49.89% 49.87%, #ffffe1 0, #ffffdc 5.56%, #ffffd6 11.11%, #ffffd1 16.67%, #ffffcb 22.22%, #fbffc6 27.78%, #ecfec1 33.33%, #dcfbbc 38.89%, #caf7b8 44.44%, #b5f2b5 50%, #9fedb4 55.56%, #87e9b5 61.11%, #6de5b8 66.67%, #4ee1be 72.22%, #1bddc5 77.78%, #00dace 83.33%, #00d7d7 88.89%, #00d4e1 94.44%, #00d2eb 100%); */
-background-color: transparent;
 flex-direction: column;
 display: flex;
 text-align:center;
@@ -13,11 +11,27 @@ border: transparent;
 box-shadow: 11px 11px 15px 13px #000000;
 border-radius: 10px;
 img{
-    width: 20vw;
-    height: 50vh;
-    border-radius: 5%;
-}
+  width: 20vw;
+  height: 50vh;
+  border-radius: 5%;}
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    width: 60vw;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100vh;
+    img{
+        width: 45vw;
+        justify-content:center;
+        margin: auto;
+    }
+  }
 `
+
+
 export const TituloStyle =styled.h3`
 font-size:18px;
 color: #e7dced;
@@ -32,5 +46,3 @@ margin:auto;
 font-size:23px;
 color: #fffbe9;
 `
-
-

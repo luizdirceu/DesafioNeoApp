@@ -1,89 +1,95 @@
-import { useState } from "react";
+
+import { ContainerPedido, ContainerCarrinho, ContainerTable, TituloCarrinho } from "./CarrinhoStyled";
 
 
 function Carrinho(props) {
-    const { carrinho, setCarrinho, irParaOutraTela, quantidade, setQuantidade, idQuadrinho, quadrinhos } = props
+    const { carrinho, setCarrinho, irParaOutraTela, contador, setContador,  } = props
 
-    // const [resultado, setResultado] = useState(0)
-    // // console.log(quadrinhos.id);
-    // const onClickAcrescentarQuantidade = (idQuadrinho) => {
-    //     // const findQuadrinho = quadrinhos.find((item) => item.id === idQuadrinho.value)
-    //     // console.log(findQuadrinho);
-    //     for (let i = 0; i < carrinho.length; i++) {
-    //         const newProduct = carrinho.find((item) => {return item.id === carrinho[i].id})
-    //         if (carrinho[i].id === newProduct.id) {
-    //           console.log(carrinho[i].quantidade++); 
-    //         }
-    //         // console.log(newProduct);
-    //     }
-
-    // }
-    // const onClickRemoverQuantidade = () => {
-    //     if (quantidade === 2 || quantidade > 1) {
-    //         return quantidade - 1
-    //     }
-    // }
     const removerItem = (item) => {
         const novoCarrinho = [...carrinho]
         const newProduct = novoCarrinho.find((pp) => { return pp.id === item.id })
-        console.log(newProduct);
-        console.log(item);
+        // console.log(newProduct);
+        // console.log(item);
+       
         if (item.quantidade > 1) {
             item.quantidade--
             item.total = item.quantidade * item.price;
             // setCarrinho(novoCarrinho)
-        } else if((item.quantidade === 1)){
-            novoCarrinho.shift(item)
+            setContador(contador-1)
+        } else if (item.quantidade === 1) {
+            const findQuadrinho = carrinho.filter((pp) =>{return pp.id === newProduct.id})
+            console.log(findQuadrinho);
+            console.log(novoCarrinho);
+            novoCarrinho.splice(novoCarrinho.indexOf(item), 1)
+            setContador(contador-1)
+        };
+        setCarrinho(novoCarrinho);
+        
+     }
+    const addItemCarrinho = (item) => {
+        const novoCarrinho = [...carrinho]
+        const newProduct = novoCarrinho.find((pp) => { return pp.id === item.id })
+        console.log(item);
+        if (item) {
+            item.quantidade++;
+            item.total = item.quantidade * item.price
+            console.log(item);
         }
-            setCarrinho(novoCarrinho);
-    };
+        setCarrinho(novoCarrinho)
+        setContador(contador+1)
+    }
 
+    let totalCarrinho = 0
+    for (let i = 0; i < carrinho.length; i++) {
+        totalCarrinho = totalCarrinho + carrinho[i].total;
+    }
+    let contadorProdutos = 0;
+
+    for (let i = 0; i < carrinho.length; i++) {
+        contadorProdutos = contadorProdutos + carrinho[i].quantidade;
+    }
     // console.log(idQuadrinho);
 
     // console.log(carrinho);
-
+    const fraseCarrinhoVazio = <tr><td colSpan={"4"}><h4 style={{ textAlign: "center" }}>Carrinho vazio</h4></td></tr>
     return (
 
-        <section className="container-carrinho">
-            <h1>Carrinho de compras</h1>
-            <table className="table">
+        <ContainerCarrinho>
+            <TituloCarrinho>Carrinho de compras</TituloCarrinho>
+            <ContainerTable>
                 <tr>
-                    <td>produto</td>
-                    <td>Preço</td>
-                    <td>quantidade</td>
-                    <td>Total</td>
+                    <td><h5>Produto</h5></td>
+                    <td><h5>Preço</h5></td>
+                    <td><h5>Quantidade</h5></td>
+                    <td><h5>Total</h5></td>
                 </tr>
-                {/* </table> */}
-                {carrinho.length > 0 && carrinho.map((item) => {
+                {carrinho.length > 0 ? carrinho.map((item) => {
                     return (
-                        // <table className="table-carrinho">
                         <tr>
                             <td><img src={item.img} /></td>
                             <td>{item.price}</td>
                             <td>
-                                {/* <button onClick={onClickRemoverQuantidade}>-</button> */}
-                                {/* {item.quantidade === 1 ? item.quantidade : } */}
-
-                                {item.quantidade}
-                                <button onClick={() => removerItem(item)}>---</button>
-
-                                {/* <button onClick={() => onClickAcrescentarQuantidade(idQuadrinho)}>+</button> */}
+                                <button onClick={() => removerItem(item)} >-</button>
+                                <input value={item.quantidade} />
+                                <button onClick={() => addItemCarrinho(item)}>+</button>
                             </td>
-                            <td>{item.total}</td>
+                            <td>{item.total.toFixed([2])}</td>
                         </tr>
-
                     )
-                })}
-            </table>
-            <button onClick={() => irParaOutraTela(1)}>voltar</button>
-<section>
-    <p>Produtos:</p>
+                }) :
+                    fraseCarrinhoVazio}
 
-    <p>Total:</p>
-</section>
-        </section>
+            </ContainerTable>
+            <button onClick={() => irParaOutraTela(1)}>Voltar</button>
+            <ContainerPedido>
+                <h3>Produtos: {contadorProdutos}</h3>
 
+                <h4>Total: {totalCarrinho.toFixed([2])}</h4>
+                <button>Finalizar compras</button>
+            </ContainerPedido>
+        </ContainerCarrinho>
 
+        // 
     )
 }
 export default Carrinho;

@@ -15,8 +15,7 @@ function App() {
   const [quadrinhos, setQuadrinhos] = useState([])
   const [details, setDetails] = useState([])
   const [carrinho, setCarrinho] = useState([])
-  const [quantidade, setQuantidade] = useState(1)
-
+  const [contador, setContador] = useState(0)
   const [tela, setTela] = useState(1)
 
   function irParaOutraTela(tela) {
@@ -41,51 +40,26 @@ function App() {
     }
   }
 
-
-  // const addItensCarrinho = () => {
-  //   const novoCarrinho = [...carrinho];
-  //   // const produto = item;
-  //   const produtoExistente = novoCarrinho.find((item) => {
-  //     return item.id === quadrinhos.id;
-  //   });
-  //   if (produtoExistente) {
-  //     quantidade++
-  //   } else {
-  //     novoCarrinho.push({
-  //       ...quadrinhos,
-  //       quantidade: 1,
-  //     });
-  //   }
-  //   console.log(carrinho);
-  //   setCarrinho(novoCarrinho);
-
-  // };
-  const idQuadrinho = quadrinhos.map((item)=>{
-  return item
-})
-// console.log(idQuadrinho);
+  
   const renderQuadrinhosLista = quadrinhos.map((quadrinho) => {
+    
     return <Card
       quadrinhoTitle={quadrinho.title}
       quadrinhoId={quadrinho.id}
-      
-      quadrinhoImage={quadrinho.images}
       thumb={quadrinho.thumbnail.path}
       extension={quadrinho.thumbnail.extension}
       quadrinhos={quadrinhos}
-      prices={quadrinho.prices[0].price}
+      prices={`${quadrinho.prices[0].price}`}
       irParaOutraTela={irParaOutraTela}
       details={details}
       setDetails={setDetails}
       setCarrinho={setCarrinho}
       carrinho={carrinho}
-      setQuantidade={setQuantidade}
-      quantidade={quantidade}
-      idQuadrinho={idQuadrinho}
-    // addItensCarrinho={addItensCarrinho}
+      setContador={setContador}
+      contador={contador}
     />
     
-  })
+  }).reverse()
   
 
 // console.log(idQuadrinho);
@@ -94,24 +68,24 @@ function App() {
   const renderizaTela = () => {
     switch (tela) {
       case 1 || 4:
-        return <HomePage irParaOutraTela={irParaOutraTela} render={renderQuadrinhosLista} />;
+        return <HomePage irParaOutraTela={irParaOutraTela} 
+        render={renderQuadrinhosLista} 
+        contador={contador}
+        />;
       case 2:
         return <Details irParaOutraTela={irParaOutraTela} details={details} />
       case 3:
         return <Carrinho irParaOutraTela={irParaOutraTela}
           carrinho={carrinho}
           setCarrinho={setCarrinho}
-          quantidade={quantidade}
-          setQuantidade={setQuantidade}
-          idQuadrinho={idQuadrinho}
           quadrinhos = {quadrinhos}
+          contador={contador}
+          setContador={setContador}
         />
     }
   }
   return (
-    //     <>
-    // <HomePage render={renderQuadrinhosLista}/>
-    //     </>
+   
     <GlobalState >
       <GlobalStyle/>
       {renderizaTela()}

@@ -1,17 +1,17 @@
 import { logDOM } from "@testing-library/react"
 import axios from "axios"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { Context } from "../../contexts/Contexts"
 import Details from "../../pages/details/Details"
 import { DivStyle, IdStyle, TituloStyle,PStyle } from "./CardStyled"
 
 function Card(props) {
   const { quadrinhoTitle, quadrinhoId, quadrinhos, prices, carrinho, thumb,
-    extension, irParaOutraTela, setDetails, details, setCarrinho, setQuantidade, quantidade, idQuadrinho } = props
+    extension, irParaOutraTela, setDetails, contador, setContador } = props
   // console.log(quadrinhos);
   const context = useContext(Context)
   // const {quadrinhos , setQuadrinhos} = context
-  const [quadrinhoCards, setQuadrinhoCards] = useState(false)
+  
 
   const renderDetails = () => {
     quadrinhos.filter((item) => {
@@ -24,14 +24,14 @@ function Card(props) {
     // console.log(details);
     irParaOutraTela(2)
   }
-
+ 
   // console.log(quadrinhoId);
   const addItensCarrinho = (quadrinhoId) => {
     const newProduct = carrinho.find((item) => { return item.id === quadrinhoId})
     const findQuadrinho = quadrinhos.find((item) => item.id === quadrinhoId)
     const newQuadrinho = {
       img: `${findQuadrinho.thumbnail.path}.${findQuadrinho.thumbnail.extension}`,
-      price: findQuadrinho.prices[0].price,
+      price: findQuadrinho.prices[0].price ||  valor,
       quantidade: 1,
       total: 0,
       id: findQuadrinho.id
@@ -43,54 +43,29 @@ function Card(props) {
       // setCarrinho([...carrinho])
      console.log(newQuadrinho.quantidade); 
      console.log(newProduct);
+     setContador(contador+1)
     }else{
       carrinho.push({
         ...newQuadrinho,
         quantidade: 1,
         total: newQuadrinho.price
       })
+      setContador(contador+1)
       // setCarrinho([...carrinho, {...newQuadrinho}])
     }
-    // carrinho.includes(newProduct) ? setCarrinho([...carrinho], setQuantidade(newProduct.quantidade+1))
-    // : 
-    // setCarrinho([...carrinho, {...newQuadrinho}])
-    //  || setQuantidade(quantidade+1)
-    // if (newProduct === undefined) {
-    //   setQuantidade(1)
-    //   console.log(newProduct);
-    //  return setCarrinho([...carrinho, {...newQuadrinho}])
-      
-    //   // setQuantidade(quantidade+1)
-    // } 
-    // // else if(newQuadrinho.id === newProduct){
-    // //   console.log(newProduct.id);
-    // // }
-    // // else if(newQuadrinho.id === newProduct.id){
-    // //   console.log(newProduct);
-    // //  return setCarrinho([...carrinho,{...newQuadrinho }])
-    // // }
-    // else{setCarrinho([{...newQuadrinho }])
-
-    // }
-
-
   }
-  //  else if(newProduct !== undefined){ setQuantidade(+1)}
-  //  else{
-  //   setCarrinho([...carrinho, {quantidade: setQuantidade(quantidade+1)}])
-  //  }
 
   // console.log(carrinho);
 
 
-
+  var valor = 5.0
 
   return (
     <DivStyle>
       <img src={`${thumb}.${extension}`} />
       <TituloStyle>{quadrinhoTitle}</TituloStyle>
       <IdStyle>#ID:{quadrinhoId}</IdStyle>
-      <PStyle>R$:{prices}</PStyle>
+      <PStyle>R$:{prices !== "0" ? prices.replace(".", ",") : valor}</PStyle>
       <button className="btn-card" onClick={() => addItensCarrinho(quadrinhoId)} >Adicionar ao carrinho</button>
       <button className="btn-card" onClick={() => irParaOutraTela(3)}>Carrinho</button>
       <button className="btn-card" onClick={renderDetails}>Detalhes</button>

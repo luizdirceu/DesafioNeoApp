@@ -1,17 +1,6 @@
 .App {
   text-align: center;
 }
-
-.card {
-  background-color: blue;
-  display: grid;
-  grid-template-columns: repeat(3);
-  gap: 50px;
-  padding: 10px;
-  margin: 10px;
-  height: 40px;
-}
-
 .home {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -30,35 +19,6 @@
   /* border: 7px solid black; */
   padding: 15px;
 }
-.table{
-  margin: auto;
-  width: 50vw;
-  background-color: blanchedalmond;
-}
-.table tr td{
-  padding: 5px;
-  border:solid 1px #000;
-  width: 100px;
-}
-.table img{
-  width: 50px;
-  height: 50px;
-}
-.container-carrinho{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  gap:50px;
-}
-.container-carrinho button{
-width: 70px;
-height: 30px;
-position: relative;
-text-align: center;
-margin: auto;
-}
-
 .btn-card{
   margin: auto;
   width: 17vw;
@@ -72,7 +32,6 @@ margin: auto;
 .btn-card:hover{
   cursor: pointer;
   background-color: transparent ;
-
 }
 .header{
   text-align: center;
@@ -83,11 +42,14 @@ margin: auto;
   width: 60%;
   
 }
-.descricao{
- width: 50vw;
-  background-color: #ffffff;
-  padding: 20px;
-}
-.descricao p{
-  text-align: justify;
+.h3{
+  background-color: #ff0022;
+  margin: auto;
+  padding: 30px 80px;
+  text-decoration: underline;
+  font-size: x-large;
+  color: #fffaf4;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: end;
+  /* position: fixed; */
 }

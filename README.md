@@ -64,7 +64,7 @@ $ npm run start
 
 - <p style="text-align: justify">Sou Desenvolvedor full stack em formação pelo bootcamp de desenvolvimento web full stack da Labenu, onde realizo projetos práticos índividuais e em grupo utilizando as tecnologias HTML, CSS e Java Script e React. Este projeto foi realizado com muito carinho e muita atenção, autoria 100% minha em todos os aspectos, e estou muito feliz com o resultado!<p/>
 
-  <img src="./src/assets/minhafoto.jpg" alt="luiz-dirceu" style="width:290px"/>
+  <img src="./desafio-app-neo/src/assets/minhafoto.jpg" alt="luiz-dirceu" style="width:290px"/>
 
 
 [Linkedin](https://www.linkedin.com/in/luiz-dirceu-marques/)

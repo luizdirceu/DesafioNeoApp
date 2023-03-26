@@ -33,7 +33,7 @@ Um e-commerce de quadrinhos feito com a api da marvel.
 
 ## Demonstração
 
-[Link demonstração](handsome-farmer.surge.sh)
+- Cole no seu navegador --> handsome-farmer.surge.sh
 
 
 ## Como rodar este projeto ?

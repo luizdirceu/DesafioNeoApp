@@ -1,6 +1,6 @@
 # Projeto marvel quadrinhos
 <!-- ![Marvel quadrinhos](./src/assets/marvel.jpg) -->
-<img src="./src/assets/marvel.jpg" alt="marvel" style="width:500px"/>
+<img src="././desafio-app-neo/src/assets/marvel.jpg" alt="marvel" style="width:500px"/>
 
 Um e-commerce de quadrinhos feito com a api da marvel.
 

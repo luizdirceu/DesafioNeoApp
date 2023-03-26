@@ -10,6 +10,17 @@ export const ContainerCarrinho = styled.section`
   border:7px solid black;
   margin: 20px 200px;
   padding: 20px;
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+   display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    height: auto;
+    width: auto;
+    margin: auto;
+    padding: auto;
+    border: none;
+    background-color: white;
+  }
   button {
   padding: 4px;
   margin: auto;
@@ -33,7 +44,14 @@ width: 20vw;
 margin: auto;
 border-left: 5px solid black;
 border-right: 5px solid black;
-
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+   display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: auto;
+    margin: auto;
+    padding: auto;
+  }
 `
 
 
@@ -70,5 +88,13 @@ export const ContainerPedido = styled.section`
   background-color: #0f6602;
   color: #fff25a;
   border-radius: 10%;
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+   display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: auto;
+    margin: auto;
+    padding: auto;
+  }
 `
 

@@ -1,18 +1,11 @@
-import { logDOM } from "@testing-library/react"
-import axios from "axios"
-import { useContext, useState } from "react"
-import { Context } from "../../contexts/Contexts"
-import Details from "../../pages/details/Details"
-import { DivStyle, IdStyle, TituloStyle,PStyle } from "./CardStyled"
+import { IdStyle, TituloStyle,PStyle, ContainerCard } from "./CardStyled"
 
 function Card(props) {
+  // Todas as props recebidas sendo desestruturadas.
   const { quadrinhoTitle, quadrinhoId, quadrinhos, prices, carrinho, thumb,
     extension, irParaOutraTela, setDetails, contador, setContador } = props
-  // console.log(quadrinhos);
-  const context = useContext(Context)
-  // const {quadrinhos , setQuadrinhos} = context
-  
 
+    // Função que retorna o detalhe deste quadrinho.
   const renderDetails = () => {
     quadrinhos.filter((item) => {
       if (item.id === quadrinhoId) {
@@ -21,11 +14,10 @@ function Card(props) {
       ]);
       }
     })
-    // console.log(details);
     irParaOutraTela(2)
   }
- 
-  // console.log(quadrinhoId);
+  
+  // Função para adcionar itens ao carrinho.
   const addItensCarrinho = (quadrinhoId) => {
     const newProduct = carrinho.find((item) => { return item.id === quadrinhoId})
     const findQuadrinho = quadrinhos.find((item) => item.id === quadrinhoId)
@@ -36,13 +28,9 @@ function Card(props) {
       total: 0,
       id: findQuadrinho.id
     }
-    console.log(newQuadrinho);
     if(newProduct){
       newProduct.quantidade++;
-      newProduct.total = newProduct.quantidade * newProduct.price;
-      // setCarrinho([...carrinho])
-     console.log(newQuadrinho.quantidade); 
-     console.log(newProduct);
+      newProduct.total = newProduct.quantidade * newProduct.price;  
      setContador(contador+1)
     }else{
       carrinho.push({
@@ -51,17 +39,14 @@ function Card(props) {
         total: newQuadrinho.price
       })
       setContador(contador+1)
-      // setCarrinho([...carrinho, {...newQuadrinho}])
     }
   }
 
-  // console.log(carrinho);
-
-
+  // Variavel caso o preço do quadrinho estiver 0.
   var valor = 5.0
 
   return (
-    <DivStyle>
+    <ContainerCard>
       <img src={`${thumb}.${extension}`} />
       <TituloStyle>{quadrinhoTitle}</TituloStyle>
       <IdStyle>#ID:{quadrinhoId}</IdStyle>
@@ -69,7 +54,7 @@ function Card(props) {
       <button className="btn-card" onClick={() => addItensCarrinho(quadrinhoId)} >Adicionar ao carrinho</button>
       <button className="btn-card" onClick={() => irParaOutraTela(3)}>Carrinho</button>
       <button className="btn-card" onClick={renderDetails}>Detalhes</button>
-    </DivStyle>
+    </ContainerCard>
 
   )
 }
